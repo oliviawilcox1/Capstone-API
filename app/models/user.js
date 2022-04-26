@@ -7,6 +7,17 @@ const userSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
+		favorites: {
+			type: Array,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		dateJoined: {
+			type: String,
+			// required: true,
+		},
 		hashedPassword: {
 			type: String,
 			required: true,
