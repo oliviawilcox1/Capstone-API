@@ -22,7 +22,7 @@ const data = [
 		cuisine: "Mexican Cuisine",
 		address: "63 Carmine Street",
     },  {
-        name:  "Blossom on Colubus",
+        name:  "Blossom on Columbus",
 		image: "https://images.squarespace-cdn.com/content/v1/545c4607e4b0f8d97a394c9a/1614185975325-EQNQ1EHZYUBOLILJ1CLQ/A.ETLING+photography+-+09.24.2019+-_DSC5977.jpg?format=2500w",
 		description: "Extremely inventive and unique cuisine! Try their Seitan Piccata for a great entree!",
 		rating: 4.4,
