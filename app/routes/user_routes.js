@@ -101,6 +101,19 @@ router.post('/sign-in', (req, res, next) => {
 		.catch(next)
 })
 
+// SHOW Route of one User
+
+router.get('/profile/:id', (req, res, next) => {
+	// req.params.id will be set based on the `:id` in the route
+	
+	User.findById(req.params.id)
+		// if `findById` is succesful, respond with 200 and "restaurant" JSON
+		.then((user) => res.status(200).json({ user: user.toObject() }))
+		// if an error occurs, pass it to the handler
+		.catch(next)
+})
+
+
 // CHANGE password
 // PATCH /change-password
 router.patch('/change-password', requireToken, (req, res, next) => {

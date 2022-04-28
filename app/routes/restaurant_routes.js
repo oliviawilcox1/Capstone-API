@@ -19,6 +19,7 @@ const requireOwnership = customErrors.requireOwnership
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
 const removeBlanks = require('../../lib/remove_blank_fields')
+const restaurant = require('../models/restaurant')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
@@ -79,7 +80,7 @@ router.post('/restaurants',  (req, res, next) => {
 // *******************************************
 
 
-
+// Index
 router.get('/reviews', (req, res, next) => {
 	Review.find({})
 		.populate('restaurant')
@@ -95,22 +96,36 @@ router.get('/reviews', (req, res, next) => {
 		// if an error occurs, pass it to the handler
 		.catch(next)
 })
-
+// CREATE route
 router.post('/reviews', requireToken, (req, res, next) => {
 	// set owner of new favorite to be current user
 	req.body.review.owner = req.user.id
-
-
+	req.body.review.restaurant = req.params.id
 	Review.create(req.body.review)
+		//console.log('rev', req.body.review)
 		// respond to succesful `create` with status 201 and JSON of new "favorite"
 		// ENTER INCREMENT HERE for a .then 
+		// .populate('restaurant')
+		// .then((review)=> {
+		// 	Restaurant.findById(req.params.id)
+		// 		.then(restaurant => {
+		// 			restaurant.review.push(review)
+		// 			restaurant.save()
+		// 			return review
+		// 		})
+		// .catch(next)
+			
+		// })
+		// Restaurant.findById()
+		// .then(restaurant => {
+		// 	restaurant = restaurant.visitors++
+		// restaurant = (restaurant.visitors * restaurant.reviews ) + req.body.review.rating /restaurant.visitors
+		// return restaurant.save()
+
+		// })
 		.then((review) => {
 			res.status(201).json({ review: review.toObject() })
 		})
-		
-		// if an error occurs, pass it off to our error handler
-		// the error handler needs the error message and the `res` object so that it
-		// can send an error message back to the client
 		.catch(next)
 })
 
