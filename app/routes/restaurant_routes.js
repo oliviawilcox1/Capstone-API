@@ -6,6 +6,7 @@ const passport = require('passport')
 // pull in Mongoose model for restaurants
 const Restaurant = require('../models/restaurant')
 const Review = require('../models/review')
+const User = require('../models/user')
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error
 const customErrors = require('../../lib/custom_errors')
@@ -19,7 +20,9 @@ const requireOwnership = customErrors.requireOwnership
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
 const removeBlanks = require('../../lib/remove_blank_fields')
-const restaurant = require('../models/restaurant')
+const review = require('../models/review')
+
+
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
@@ -56,22 +59,45 @@ router.get('/restaurants/:id', (req, res, next) => {
 		.catch(next)
 })
 
-// CREATE
+// CREATE Favorites
 // POST /restaurants
-router.post('/restaurants',  (req, res, next) => {
+router.post('/profile/:id',  (req, res, next) => {
 	// set owner of new restaurant to be current user
 	//req.body.restaurant.owner = req.user.id
 
-	Restaurant.create(req.body.restaurant)
-		// respond to succesful `create` with status 201 and JSON of new "restaurant"
-		.then((restaurant) => {
-			res.status(201).json({ restaurant: restaurant.toObject() })
-		})
-		// if an error occurs, pass it off to our error handler
-		// the error handler needs the error message and the `res` object so that it
-		// can send an error message back to the client
-		.catch(next)
-})
+	// Restaurant.create(req.body.restaurant)
+	// 	// respond to succesful `create` with status 201 and JSON of new "restaurant"
+	// 	.then((restaurant) => {
+	// 		res.status(201).json({ restaurant: restaurant.toObject() })
+	// 	})
+	// 	// if an error occurs, pass it off to our error handler
+	// 	// the error handler needs the error message and the `res` object so that it
+	// 	// can send an error message back to the client
+	// 	.catch(next)
+
+		// get our review from req.body
+		const restaurant = req.body.favorite;
+		// get our productId from req.params.id
+		const userId = req.params.id;
+		// find the product
+		User.findById(userId)
+		  // handle what happens if no products found
+		  .then(handle404)
+		  // push the review to the reviews array
+		  .then((user) => {
+			// console.log('this is the restaurant', user);
+			console.log('this is the restaurant', restaurant);
+			user.favorites.push(restaurant);
+	  
+			// save the product
+			return user.save();
+		  })
+		  // then we send the product as json
+		  .then((user) => res.status(201).json({ user: user }))
+		  // catch errors and send to the handler
+		  .catch(next);
+	  });
+
 
 
 
@@ -97,38 +123,43 @@ router.get('/reviews', (req, res, next) => {
 		.catch(next)
 })
 // CREATE route
-router.post('/reviews', requireToken, (req, res, next) => {
-	// set owner of new favorite to be current user
+router.post('/reviews/:id', requireToken, (req, res, next) => {
+	
 	req.body.review.owner = req.user.id
 	req.body.review.restaurant = req.params.id
 	Review.create(req.body.review)
+			 .then(review => {
+					// review.save()
+					console.log(review)
+					Restaurant.findById(req.params.id)
+					.then(restaurant => {
+						restaurant.rating = ((restaurant.visitors * restaurant.rating ) + review.rating) /(restaurant.visitors+1)
+						restaurant.visitors++
+						
+						console.log(restaurant.rating)
+						console.log(restaurant)
+						return restaurant
+						})
+					.catch(next)
+				return review.save()
+				})
+			.then((review) => {
+				res.status(201).json({ review: review.toObject() })
+			})
+			
+			.catch(next)
+		})
+		// Restaurant.findById()
+	
 		//console.log('rev', req.body.review)
 		// respond to succesful `create` with status 201 and JSON of new "favorite"
 		// ENTER INCREMENT HERE for a .then 
 		// .populate('restaurant')
 		// .then((review)=> {
-		// 	Restaurant.findById(req.params.id)
-		// 		.then(restaurant => {
-		// 			restaurant.review.push(review)
-		// 			restaurant.save()
-		// 			return review
-		// 		})
-		// .catch(next)
+		
+	
 			
-		// })
-		// Restaurant.findById()
-		// .then(restaurant => {
-		// 	restaurant = restaurant.visitors++
-		// restaurant = (restaurant.visitors * restaurant.reviews ) + req.body.review.rating /restaurant.visitors
-		// return restaurant.save()
-
-		// })
-		.then((review) => {
-			res.status(201).json({ review: review.toObject() })
-		})
-		.catch(next)
-})
-
+	
 
 
 router.patch('/reviews/:id', requireToken, removeBlanks, (req,res,next) => {
