@@ -129,7 +129,8 @@ router.post('/reviews/:id', requireToken, (req, res, next) => {
 	req.body.review.restaurant = req.params.id
 	Review.create(req.body.review)
 			 .then(review => {
-					// review.save()
+					requireOwnership(req, review)
+
 					console.log(review)
 					Restaurant.findById(req.params.id)
 					.then(restaurant => {
@@ -138,7 +139,7 @@ router.post('/reviews/:id', requireToken, (req, res, next) => {
 						
 						console.log(restaurant.rating)
 						console.log(restaurant)
-						return restaurant
+						return restaurant.save()
 						})
 					.catch(next)
 				return review.save()
