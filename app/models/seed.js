@@ -139,6 +139,7 @@ const data = [
 		visitors: 923,
 		cuisine: "Vegetarian Cuisine",
 		address: "86 Allen Street",
+		number: 2122287732,
     },  {
         name:  "Delice & Sarrasin",
 		image: "https://assets3.thrillist.com/v1/image/3044181/1200x630",
@@ -147,6 +148,7 @@ const data = [
 		visitors: 693,
 		cuisine: "French Cuisine",
 		address: "20 Christopher Street",
+		number: 2122437200,
     },  {
         name:  "Pure Ktchn",
 		image: "https://images.squarespace-cdn.com/content/v1/587fd9153e00be6f0d1fd83e/1492523396164-M06LDGP846BPSPYT42HI/Pure+Ktcnh+four+bowls.JPG",
@@ -155,6 +157,7 @@ const data = [
 		visitors: 343,
 		cuisine: "American Cuisine",
 		address: "352 W 46th Street",
+		number: 6467558502,
     },  {
         name:  "Cadence",
 		image: "https://static01.nyt.com/images/2021/08/03/dining/03rest-cadence4/merlin_191497908_c8e5752b-757f-41c0-95b3-11231292e59e-mobileMasterAt3x.jpg",
@@ -163,6 +166,7 @@ const data = [
 		visitors: 105,
 		cuisine: "Soul Food",
 		address: "122 E 7th Street",
+		number: 9294565660,
     },  {
         name:  "Sestina",
 		image: "https://media.cntraveler.com/photos/5ffe51991127e74ab1e176b9/16:9/w_2560,c_limit/SPAGHETTI.%20CARBONARA.jpg",
@@ -171,6 +175,7 @@ const data = [
 		visitors: 123,
 		cuisine: "Italian Cuisine",
 		address: "67 2nd Ave",
+		number: 6464904114,
     },  {
         name:  "Bar Verde",
 		image: "https://media.timeout.com/images/104699489/750/422/image.jpg",
@@ -179,6 +184,7 @@ const data = [
 		visitors: 450,
 		cuisine: "Mexican Cuisine",
 		address: "65 2nd Ave",
+		number: 2127776965,
     },  {
         name:  "Double Zero",
 		image: "https://cdn.vox-cdn.com/thumbor/aYtp0DYwfo_TmtFHtnMp74WwEL0=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22708248/ADRIAN_MUELLER_51.jpg",
@@ -187,6 +193,7 @@ const data = [
 		visitors: 731,
 		cuisine: "Pizzeria/Italian Cuisine",
 		address: "65 2nd Ave",
+		number: 2127771608, 
     },  {
         name:  "Hartbreakers",
 		image: "https://images.squarespace-cdn.com/content/v1/5ae75c2c5b409b339838d023/1553831038861-O56LG4XNR9POBA93N0FN/image-asset.jpeg",
@@ -195,6 +202,7 @@ const data = [
 		visitors: 243,
 		cuisine: "American Cuisine",
 		address: "820 Hart Street",
+		number: 7183264500,
     },  {
         name:  "Terms of Endearment",
 		image: "https://images.squarespace-cdn.com/content/v1/5db3280c3a92327bb0e0cdd9/1619647645728-G3UH2ABLR3E98SB9YQNQ/Cornershop-59.jpg?format=2500w",
@@ -203,6 +211,7 @@ const data = [
 		visitors: 131,
 		cuisine: "Cafe/Pastry Shop",
 		address: "135 Metropolitan Street",
+		number: 3477631420, 
     },  {
         name:  "The VSPOT",
 		image: "https://www.vspot.restaurant/wp-content/uploads/sb-instagram-feed-images/273598001_631748251271728_2433653080110588843_nfull.jpg",
@@ -211,6 +220,7 @@ const data = [
 		visitors: 1057,
 		cuisine: "Mexican Cuisine",
 		address: "156th 5th Avenue",
+		number: 7189288778, 
     },  {
         name:  "Eterea",
 		image: "https://img.particlenews.com/image.php?type=thumbnail_580x000&url=1OCAOz_0beqP2YG00",
@@ -219,6 +229,7 @@ const data = [
 		visitors: 86,
 		cuisine: "Cocktails/Small Plates",
 		address: "511 E 5th Street",
+		number: 9172865617, 
     },  {
         name:  "Raiz",
 		image: "https://vegoutmag.com/wp-content/uploads/2022/02/Raiz.jpg",
@@ -227,6 +238,7 @@ const data = [
 		visitors: 44,
 		cuisine: "Mexican Cuisine",
 		address: "120 1st Avenue",
+		number: 6468632233,
     },  {
         name:  "Coletta",
 		image: "https://www.colettanyc.com/wp-content/uploads/BV0A5363.jpg",
@@ -235,6 +247,7 @@ const data = [
 		visitors: 93,
 		cuisine: "Italian Cuisine",
 		address: "365 3rd Avenue",
+		number: 6468612889,
     },  {
         name:  "Black Flamingo",
 		image: "https://images.happycow.net/venues/1024/76/33/hcmp76333_160807.jpeg",
@@ -243,6 +256,7 @@ const data = [
 		visitors: 701,
 		cuisine: "Mexican Cuisine",
 		address: "168 Borinquen Place",
+		number: 3473350838
     },  {
         name:  "Le Botaniste",
 		image: "https://lebotaniste.us/wp-content/uploads/2020/04/Le-Botaniste-prescriptions-bowls-2-1-1-scaled.jpg",
@@ -251,6 +265,7 @@ const data = [
 		visitors: 665,
 		cuisine: "American Cuisine",
 		address: "833 Lexington Avenue",
+		number: 9172620766,
     },  {
         name:  "Seasoned Vegan",
 		image: "https://static.wixstatic.com/media/60dc09_6e2e7929a1af436193f71e113f6f4d94~mv2.png/v1/fill/w_280,h_438,al_c,q_85,usm_0.66_1.00_0.01/60dc09_6e2e7929a1af436193f71e113f6f4d94~mv2.webp",
@@ -259,6 +274,7 @@ const data = [
 		visitors: 1712,
 		cuisine: "Soul Food",
 		address: "55 St Nicholas Ave",
+		number: 2122220092,
     } 
 ]
 
