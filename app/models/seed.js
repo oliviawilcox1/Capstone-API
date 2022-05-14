@@ -22,6 +22,7 @@ const data = [
 		visitors: 760,
 		cuisine: "Mexican Cuisine",
 		address: "63 Carmine Street",
+		number: 9172620184,
     },  {
         name:  "Blossom on Columbus",
 		image: "https://images.squarespace-cdn.com/content/v1/545c4607e4b0f8d97a394c9a/1614185975325-EQNQ1EHZYUBOLILJ1CLQ/A.ETLING+photography+-+09.24.2019+-_DSC5977.jpg?format=2500w",
@@ -30,6 +31,7 @@ const data = [
 		visitors: 847,
 		cuisine: "Vegan Cuisine",
 		address: "507 Columbus Ave",
+		number: 2128752600,
     },  {
         name:  "Avant Garden",
 		image: "https://cdn.vox-cdn.com/thumbor/KqNR3Cm3yle2MHU3nOWgMrTDhVc=/0x0:6000x4000/1200x800/filters:focal(2520x1520:3480x2480)/cdn.vox-cdn.com/uploads/chorus_image/image/60075049/AGBK_interior3.0.jpg",
@@ -38,6 +40,7 @@ const data = [
 		visitors: 453,
 		cuisine: "High End Vegan Cuisine",
 		address: "Carmine Street",
+		number: 9173367179,
     },  {
         name:  "Ladybird",
 		image: "https://images.squarespace-cdn.com/content/v1/5f26b13319c2212d9789d9e2/e5f22332-49cb-4a86-a812-a2ad0380a357/Ladybird+Interior+%284%29.JPG?format=2500w",
@@ -46,6 +49,7 @@ const data = [
 		visitors: 554,
 		cuisine: "Small Plates/Cocktails",
 		address: "111 E 7th St",
+		number: 9294565596,
     },  {
         name:  "Champs Diner",
 		image: "https://images.otstatic.com/prod1/42061189/2/large.jpg",
@@ -54,6 +58,7 @@ const data = [
 		visitors: 2789,
 		cuisine: "American Cuisine",
 		address: "197 Meserole St",
+		number: 7185992743,
     },  {
         name:  "Modern Love",
 		image: "https://vegansnews.com/wp-content/uploads/2020/05/Modern-Love-Brooklyn-vegan.jpg",
@@ -62,6 +67,7 @@ const data = [
 		visitors: 1022,
 		cuisine: "American Cuisine",
 		address: "317 Union Ave",
+		number: 9292980626,
     } ,  {
         name:  "Peacefood Cafe",
 		image: "http://annikalundkvistphotography.com/wp-content/uploads/2015/10/ABC_5769_E.jpg",
