@@ -32,7 +32,7 @@ const restaurantSchema = new mongoose.Schema(
 		type: String,
 		requried: true,
 	},
-	number : {
+	number: {
 		type: Number,
 	},
 	review: {
