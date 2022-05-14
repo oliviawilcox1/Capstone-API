@@ -12,6 +12,7 @@ const data = [
 		visitors: 400,
 		cuisine: "Sushi Bar/Tapas",
 		address: "15 W 27th St",
+		number: 9176757700,
     },
     {
         name:  "Jajaja",
