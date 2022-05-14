@@ -76,6 +76,7 @@ const data = [
 		visitors: 1308,
 		cuisine: "American Cuisine",
 		address: "460 Amsterdam Ave",
+		number: 2129792288,
     },  {
         name:  "Hangawi",
 		image: "https://www.nycgo.com/images/venues/1446/new_york_hangawi_interior_seiichi_joanne__medium.jpg",
@@ -84,6 +85,7 @@ const data = [
 		visitors: 1212,
 		cuisine: "Korean Cuisine",
 		address: "12 E 32nd Street",
+		number: 2122130077
     },  {
         name:  "Beyond Sushi",
 		image: "https://kirschnerskorner.files.wordpress.com/2019/09/beyond-sushi-2.jpg",
@@ -92,6 +94,7 @@ const data = [
 		visitors: 1755,
 		cuisine: "Sushi",
 		address: "134 W 37th Street",
+		number: 2125640869
     },  {
         name:  "abcV",
 		image: "https://2.bp.blogspot.com/-0Mf4AoIVrQ0/WybKtA3kxfI/AAAAAAAAf34/xO5c8UAa4P0X50M9b_0Es1AaM7_zJA1tgCLcBGAs/s1600/fullsizeoutput_85c1.jpeg",
@@ -100,6 +103,7 @@ const data = [
 		visitors: 1190,
 		cuisine: "Artisanal Vegetarian Cuisine",
 		address: "38 E 18th Street",
+		number: 2124755829,
     },  {
         name:  "Urban Vegan Kitchen",
 		image: "https://images.squarespace-cdn.com/content/v1/5835ae135016e15e71e0e18f/1510862461374-83JK4LACXTQ9P5D792OF/23698748_10210199396397765_1776069710_o.jpg",
@@ -108,6 +112,7 @@ const data = [
 		visitors: 1331,
 		cuisine: "Soul Food",
 		address: "41 Carmine Street",
+		number: 6464389939,
     },  {
         name:  "Willow",
 		image: "https://willownewyork.com/wp-content/uploads/2021/01/Willow-Flatbread-2_rotated_640x480.jpg",
@@ -116,6 +121,7 @@ const data = [
 		visitors: 279,
 		cuisine: "American and Italian Cuisine",
 		address: "199 8th Avenue",
+		number: 2129292889,
     },  {
         name:  "Spicy Moon",
 		image: "https://images.squarespace-cdn.com/content/v1/6179a921e2f0103b2a8c61d9/f162b50b-3b64-4161-b25a-18ac191ad608/spicy2.jpeg?format=2500w",
@@ -124,6 +130,7 @@ const data = [
 		visitors: 433,
 		cuisine: "Chinese Cuisine",
 		address: "328 E 6th Street",
+		number: 6464298471,
     },  {
         name:  "Dirt Candy",
 		image: "https://images.squarespace-cdn.com/content/v1/5c8d03277d0c91483c66d702/1553700806180-7LFGSAL05O19D3E1GIFC/Pumpkin+Pad+Thai.jpg?format=2500w",
