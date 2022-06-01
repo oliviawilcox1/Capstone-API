@@ -52,7 +52,7 @@ const data = [
 		number: 9294565596,
     },  {
         name:  "Champs Diner",
-		image: "https://images.otstatic.com/prod1/42061189/2/large.jpg",
+		image: "https://images.nycgo.com/image/fetch/q_auto:eco,c_fill,f_auto,w_780,g_center/https://www.nycgo.com/images/venues/15191/_champs-diner-marisa-abaza-03.jpg",
 		description: "Classic Diner food veganized. Be sure to try their cookie dough milkshakes and their mozarella sticks!",
 		rating: 4.5,
 		visitors: 2789,
@@ -106,7 +106,7 @@ const data = [
 		number: 2124755829,
     },  {
         name:  "Urban Vegan Kitchen",
-		image: "https://images.squarespace-cdn.com/content/v1/5835ae135016e15e71e0e18f/1510862461374-83JK4LACXTQ9P5D792OF/23698748_10210199396397765_1776069710_o.jpg",
+		image: "https://res.cloudinary.com/vuebox/image/upload/v1607978178/Brava/urbanvegan-0.png",
 		description: "If you are craving comfort food and soul food, Urban Vegan Kitchen is for you. Try their Super Mario Quesadilla or their Po'Boy!",
 		rating: 4.5,
 		visitors: 1331,
@@ -151,7 +151,7 @@ const data = [
 		number: 2122437200,
     },  {
         name:  "Pure Ktchn",
-		image: "https://images.squarespace-cdn.com/content/v1/587fd9153e00be6f0d1fd83e/1492523396164-M06LDGP846BPSPYT42HI/Pure+Ktcnh+four+bowls.JPG",
+		image: "https://images.squarespace-cdn.com/content/v1/5ad3eff550a54fde03137d49/1531419466054-ODNCSCRISIZ91308MY2N/180515-PureKtchn-3709.jpg",
 		description: "Pure Ktchn was inspired by healthy meals that don't compromise taste and support the environment. Try their Mexican Bowl or Cauli-Steak Sandwich!",
 		rating: 4.6,
 		visitors: 343,
@@ -187,7 +187,7 @@ const data = [
 		number: 2127776965,
     },  {
         name:  "Double Zero",
-		image: "https://cdn.vox-cdn.com/thumbor/aYtp0DYwfo_TmtFHtnMp74WwEL0=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22708248/ADRIAN_MUELLER_51.jpg",
+		image: "https://img1.10bestmedia.com/Images/Photos/319900/p-LOW-RES-Photo-Credit-Heidi-Geldhauser_55_660x440.jpg",
 		description: "Matthew Kenney's second vegan restuarant featuring wood fired pizzas with delicious flavors. Try their Squash Blossom Pizza or their Eggplant Parmesan!",
 		rating: 4.5,
 		visitors: 731,
@@ -196,7 +196,7 @@ const data = [
 		number: 2127771608, 
     },  {
         name:  "Hartbreakers",
-		image: "https://images.squarespace-cdn.com/content/v1/5ae75c2c5b409b339838d023/1553831038861-O56LG4XNR9POBA93N0FN/image-asset.jpeg",
+		image: "https://assets3.thrillist.com/v1/image/3073535/1200x630",
 		description: "Visit the 70's inspired restaurant that offers great sandwiches or fried chick'n. Try their 3 Piece Bucket of Fried Chick'n or their Thunderbird Sandwich!",
 		rating: 4.7,
 		visitors: 243,
@@ -268,7 +268,7 @@ const data = [
 		number: 9172620766,
     },  {
         name:  "Seasoned Vegan",
-		image: "https://static.wixstatic.com/media/60dc09_6e2e7929a1af436193f71e113f6f4d94~mv2.png/v1/fill/w_280,h_438,al_c,q_85,usm_0.66_1.00_0.01/60dc09_6e2e7929a1af436193f71e113f6f4d94~mv2.webp",
+		image: "https://static01.nyt.com/images/2018/09/12/dining/12hungry2/merlin_143257902_d93dfaec-6008-400f-b189-e7510b32166e-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
 		description: "Seasoned Vegan offers a haven for any soul food cravings. Try their BBQ Riblets, their Harlem Chopped Cheeseburger or their Crawfish Sandwich!",
 		rating: 4.4,
 		visitors: 1712,
