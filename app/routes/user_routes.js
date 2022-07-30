@@ -5,34 +5,31 @@ const crypto = require('crypto')
 const passport = require('passport')
 // bcrypt docs: https://github.com/kelektiv/node.bcrypt.js
 const bcrypt = require('bcrypt')
-
-// see above for explanation of "salting", 10 rounds is recommended
 const bcryptSaltRounds = 10
 
-// pull in error types and the logic to handle them and set status codes
+// Custom Errors and Error Types/Set status codes
 const errors = require('../../lib/custom_errors')
 
 const BadParamsError = errors.BadParamsError
 const BadCredentialsError = errors.BadCredentialsError
-
 const User = require('../models/user')
 
-// passing this as a second argument to `router.<verb>` will make it
-// so that a token MUST be passed for that route to be available
-// it will also set `res.user`
+// passing this as a second argument to `router.<verb>` requires a token for the route to work 
+// and will also set `req.user`
 const requireToken = passport.authenticate('bearer', { session: false })
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
 
-// SIGN UP
-// POST /sign-up
+
+// *********** POST/Sign Up Route for User **************
 router.post('/sign-up', (req, res, next) => {
 	// start a promise chain, so that any errors will pass to `handle`
 	Promise.resolve(req.body.credentials)
 		// reject any requests where `credentials.password` is not present, or where
 		// the password is an empty string
 		.then((credentials) => {
+			// Checking to see if there are no credentials or password, or the passwords dont match, or is an empty string
 			if (
 				!credentials ||
 				!credentials.password ||
@@ -55,19 +52,17 @@ router.post('/sign-up', (req, res, next) => {
 		// create user with provided email and hashed password
 		.then((user) => User.create(user))
 		// send the new user object back with status 201, but `hashedPassword`
-		// won't be send because of the `transform` in the User model
+		// won't be sent because of the `transform` in the User model
 		.then((user) => res.status(201).json({ user: user.toObject() }))
 		// pass any errors along to the error handler
 		.catch(next)
 })
 
 
-// SIGN IN
-// POST /sign-in
+// *********** POST/Sign In Route for User **************
 router.post('/sign-in', (req, res, next) => {
 	const pw = req.body.credentials.password
 	let user
-
 	// find a user based on the email that was passed
 	User.findOne({ email: req.body.credentials.email })
 		.then((record) => {
@@ -103,9 +98,7 @@ router.post('/sign-in', (req, res, next) => {
 })
 
 
-
-// CHANGE password
-// PATCH /change-password
+// *********** PATCH/Change Password Route for User **************
 router.patch('/change-password', requireToken, (req, res, next) => {
 	let user
 	// `req.user` will be determined by decoding the token payload
@@ -138,6 +131,8 @@ router.patch('/change-password', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
+
+// *********** DELETE/Log Out Route for User **************
 router.delete('/sign-out', requireToken, (req, res, next) => {
 	// create a new random token for the user, invalidating the current one
 	req.user.token = crypto.randomBytes(16)

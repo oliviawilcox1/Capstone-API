@@ -1,8 +1,3 @@
-# express-auth-template
-
-A template for starting projects with `express` as an API. Includes
-authentication and common middlewares.
-
 ## Installation
 
 1. [Download](../../archive/master.zip) this template.
@@ -45,8 +40,7 @@ here that are used elsewhere to check for errors. `lib/error_handler.js` is a
 function that will be used in all your `.catch`es. It catches errors, and sets
 the response status code based on what type of error got thrown.
 
-You probably will only need to interact with files in `app/models`,
-`app/routes`, and `server.js`. You'll need to edit `db/config.js` just once,
+You'll need to edit `db/config.js` just once,
 to change the name of your app.
 
 ## API

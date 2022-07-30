@@ -1,78 +1,79 @@
-// require necessary NPM packages
+// NPM packages
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-// require route files
+// Route files
 const restaurantRoutes = require('./app/routes/restaurant_routes')
 const userRoutes = require('./app/routes/user_routes')
-// require middleware
+
+// Middleware
 const errorHandler = require('./lib/error_handler')
 const replaceToken = require('./lib/replace_token')
 const requestLogger = require('./lib/request_logger')
 
-// require database configuration logic
-// `db` will be the actual Mongo URI as a string
+// Database configuration logic
+// `db` is actual Mongo URI as a string
 const db = require('./config/db')
 
-// require configured passport authentication middleware
+// Configured passport authentication middleware
 const auth = require('./lib/auth')
 
-// define server and client ports
-// used for cors and local port declaration
+// Server and client ports
+// Used for cors and local port declaration
 const serverDevPort = 8000
 const clientDevPort = 3000
 
-// establish database connection
-// use new version of URL parser
-// use createIndex instead of deprecated ensureIndex
+// Establish database connection and use new version of URL parser, and use createIndex instead of deprecated ensureIndex
 mongoose.connect(db, {
 	useNewUrlParser: true,
 })
 
-// instantiate express application object
+// Instantiate Express Application object
 const app = express()
 
-// set CORS headers on response from this API using the `cors` NPM package
+// CORS headers set on response from API using the `cors` NPM package
 // `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
+// Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server 
+// to indicate any origins (domain, scheme, or port) other than its own from which a 
+// browser should permit loading resources.
 app.use(
 	cors({
 		origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDevPort}`,
 	})
 )
 
-// define port for API to run on
+// Port for API to run on, either localhost8000 or deployed
 // adding PORT= to your env file will be necessary for deployment
 const port = process.env.PORT || serverDevPort
 
-// this middleware makes it so the client can use the Rails convention
-// of `Authorization: Token token=<token>` OR the Express convention of
-// `Authorization: Bearer <token>`
+// Middleware that allows the client to use the Rails convention of `Authorization: Token token=<token>` 
+// OR the Express convention of `Authorization: Bearer <token>`
 app.use(replaceToken)
 
-// register passport authentication middleware
+// Passport authentication middleware
 app.use(auth)
 
-// add `express.json` middleware which will parse JSON requests into
-// JS objects before they reach the route files.
+// `express.json` middleware parses JSON requests into JS objects before they reach the route files.
 // The method `.use` sets up middleware for the Express application
 app.use(express.json())
-// this parses requests sent by `$.ajax`, which use a different content type
+
+// Parses requests sent by `$.ajax`, which use a different content type
 app.use(express.urlencoded({ extended: true }))
 
-// log each request as it comes in for debugging
+// Request Logger for debugging
 app.use(requestLogger)
 
-// register route files
+// Route files
 app.use(restaurantRoutes)
 app.use(userRoutes)
 // app.use(reviewRoutes)
-// register error handling middleware
-// note that this comes after the route middlewares, because it needs to be
+
+// Error handling middleware - comes after the route middlewares, because it needs to be
 // passed any error messages from them
 app.use(errorHandler)
 
-// run API on designated port (4741 in this case)
+// API on designated port 
 app.listen(port, () => {
 	console.log('listening on port ' + port)
 })
