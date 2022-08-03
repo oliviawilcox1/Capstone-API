@@ -110,18 +110,22 @@ router.post('/profile/:id',  (req, res, next) => {
 		// find the product
 		User.findById(userId)
 		  // handle what happens if no products found
-		  .then(handle404)
+			.then(handle404)
 		  // push the review to the reviews array
-		  .then((user) => {
-			user.favorites.push(restaurant);
-			// save the product
-			return user.save();
-		  })
+			.then((user) => {
+				user.favorites.push(restaurant);
+				// save the product
+				return user.save();
+		  	})
 		  // then we send the product as json
-		  .then((user) => res.status(201).json({ user: user }))
+		  	.then((user) => res.status(201).json({ user: user }))
 		  // catch errors and send to the handler
-		  .catch(next);
+		  	.catch(next);
 	  });
+
+
+	
+
 
 
 
