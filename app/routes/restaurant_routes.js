@@ -43,6 +43,24 @@ router.get('/restaurants', (req, res, next) => {
 		.catch(next)
 })
 
+
+
+// *********** GET/Index Route for Restaurants Sorted in Descending Order **************
+router.get('/restaurants/filter', (req, res, next) => {
+	Restaurant.find({}).sort({"rating":-1})
+	// find all restaurants
+		.then((restaurants) => {
+			// `restaurants` will be an array of Mongoose documents
+			// we want to convert each one to a POJO(plain old javascript object), so we use `.map` to
+			// apply `.toObject` to each one
+			return restaurants.map((restaurant) => restaurant.toObject())
+		})
+		// respond with status 200 and JSON of the restaurants
+		.then((restaurants) => res.status(200).json({ restaurants: restaurants }))
+		// if an error occurs, pass it to the handler
+		.catch(next)
+})
+
 // *********** GET/Show Route for One Restaurant **************
 router.get('/restaurants/:id', (req, res, next) => {
 	Restaurant.findById(req.params.id)
@@ -89,6 +107,8 @@ router.post('/profile/:id',  (req, res, next) => {
 		  .catch(next);
 	  });
 
+
+
 // *******************************************
 //  Review Routes
 // *******************************************
@@ -111,6 +131,9 @@ router.get('/reviews', (req, res, next) => {
 		// if an error occurs, pass it to the handler
 		.catch(next)
 })
+
+
+
 
 // *********** POST/Create Route for Reviews **************
 router.post('/reviews/:id', requireToken, (req, res, next) => {
@@ -179,6 +202,10 @@ router.delete('/reviews/:id', requireToken, (req, res, next) => {
 		// if an error occurs, pass it to the handler
 		.catch(next)
 })
+
+
+
+
 
 
 module.exports = router
