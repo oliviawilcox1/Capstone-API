@@ -54,7 +54,7 @@ router.get('/restaurants/sum', (req, res, next) => {
 			return  sum
 		})
 		// respond with status 200 and JSON of the restaurants
-		.then((sum) => res.status(200).json({ sum: sum }))
+		.then((sum) => res.status(200).json({ sum: sum}))
 		// if an error occurs, pass it to the handler
 		.catch(next)
 })
@@ -65,14 +65,14 @@ router.get('/restaurants/sum', (req, res, next) => {
 router.get('/restaurants/filter', (req, res, next) => {
 	Restaurant.find({}).sort({"rating":-1})
 	// find all restaurants and sort them by rating in descending order 
-		.then((restaurants) => {
+		.then((filtered) => {
 			// `restaurants` will be an array of Mongoose documents
 			// we want to convert each one to a POJO(plain old javascript object), so we use `.map` to
 			// apply `.toObject` to each one
-			return restaurants.map((restaurant) => restaurant.toObject())
+			return filtered.map((filter) => filter.toObject())
 		})
 		// respond with status 200 and JSON of the restaurants
-		.then((restaurants) => res.status(200).json({ restaurants: restaurants }))
+		.then((filtered) => res.status(200).json({ filter: filtered }))
 		// if an error occurs, pass it to the handler
 		.catch(next)
 })
@@ -90,19 +90,6 @@ router.get('/restaurants/:id', (req, res, next) => {
 
 // *********** POST/Create Route for Favorites **************
 router.post('/profile/:id',  (req, res, next) => {
-	// set owner of new restaurant to be current user
-	//req.body.restaurant.owner = req.user.id
-
-	// Restaurant.create(req.body.restaurant)
-	// 	// respond to succesful `create` with status 201 and JSON of new "restaurant"
-	// 	.then((restaurant) => {
-	// 		res.status(201).json({ restaurant: restaurant.toObject() })
-	// 	})
-	// 	// if an error occurs, pass it off to our error handler
-	// 	// the error handler needs the error message and the `res` object so that it
-	// 	// can send an error message back to the client
-	// 	.catch(next)
-
 		// get our review from req.body
 		const restaurant = req.body.favorite;
 		// get our productId from req.params.id
@@ -123,8 +110,22 @@ router.post('/profile/:id',  (req, res, next) => {
 		  	.catch(next);
 	  });
 
+// *********** POST/Create Route for New Restaurant **************
+router.post('/restaurants',  (req, res, next) => {
+	// set owner of new restaurant to be current user
+	// req.body.restaurant.owner = req.user.id
+	Restaurant.create(req.body.restaurant)
+		// respond to succesful `create` with status 201 and JSON of new "restaurant"
+		.then((restaurant)=> {
+			console.log(req.body.restaurant)
+			res.status(201).json({ restaurant: restaurant.toObject() })
+		})
+		// if an error occurs, pass it off to our error handler
+		// the error handler needs the error message and the `res` object so that it
+		// can send an error message back to the client
+		.catch(next)
 
-	
+});
 
 
 
@@ -179,7 +180,7 @@ router.post('/reviews/:id', requireToken, (req, res, next) => {
 					.catch(next)
 					// catch any errors
 				return review.save()
-				// save teh new review
+				// save the new review
 				})
 			.then((review) => {
 				// then we send the product as json after converting to an Object 
