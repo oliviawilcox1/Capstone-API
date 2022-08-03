@@ -47,14 +47,14 @@ router.get('/restaurants', (req, res, next) => {
 router.get('/restaurants/sum', (req, res, next) => {
 	Restaurant.count({})
 	// Count all restaurants in the DB
-		.then((restaurants) => {
+		.then((sum) => {
 			// `restaurants` will be an array of Mongoose documents
 			// we want to convert each one to a POJO(plain old javascript object), so we use `.map` to
 			// apply `.toObject` to each one
-			return  restaurants
+			return  sum
 		})
 		// respond with status 200 and JSON of the restaurants
-		.then((restaurants) => res.status(200).json({ restaurants: restaurants }))
+		.then((sum) => res.status(200).json({ sum: sum }))
 		// if an error occurs, pass it to the handler
 		.catch(next)
 })
@@ -109,17 +109,17 @@ router.post('/profile/:id',  (req, res, next) => {
 		const userId = req.params.id;
 		// find the product
 		User.findById(userId)
-		  // handle what happens if no products found
+		// handle what happens if no products found
 			.then(handle404)
-		  // push the review to the reviews array
+		  	// push the review to the reviews array
 			.then((user) => {
 				user.favorites.push(restaurant);
 				// save the product
 				return user.save();
 		  	})
-		  // then we send the product as json
+		  	// then we send the product as json
 		  	.then((user) => res.status(201).json({ user: user }))
-		  // catch errors and send to the handler
+		  	// catch errors and send to the handler
 		  	.catch(next);
 	  });
 
