@@ -43,12 +43,28 @@ router.get('/restaurants', (req, res, next) => {
 		.catch(next)
 })
 
+// *********** GET Route for Total # of Restaurants ********
+router.get('/restaurants/sum', (req, res, next) => {
+	Restaurant.count({})
+	// Count all restaurants in the DB
+		.then((restaurants) => {
+			// `restaurants` will be an array of Mongoose documents
+			// we want to convert each one to a POJO(plain old javascript object), so we use `.map` to
+			// apply `.toObject` to each one
+			return  restaurants
+		})
+		// respond with status 200 and JSON of the restaurants
+		.then((restaurants) => res.status(200).json({ restaurants: restaurants }))
+		// if an error occurs, pass it to the handler
+		.catch(next)
+})
+
 
 
 // *********** GET/Index Route for Restaurants Sorted in Descending Order **************
 router.get('/restaurants/filter', (req, res, next) => {
 	Restaurant.find({}).sort({"rating":-1})
-	// find all restaurants
+	// find all restaurants and sort them by rating in descending order 
 		.then((restaurants) => {
 			// `restaurants` will be an array of Mongoose documents
 			// we want to convert each one to a POJO(plain old javascript object), so we use `.map` to
