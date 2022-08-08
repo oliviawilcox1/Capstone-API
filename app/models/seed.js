@@ -44,7 +44,7 @@ const data = [
     },  {
         name:  "Ladybird",
 		image: "https://images.squarespace-cdn.com/content/v1/5f26b13319c2212d9789d9e2/e5f22332-49cb-4a86-a812-a2ad0380a357/Ladybird+Interior+%284%29.JPG?format=2500w",
-		description: "Offering yummy vegan tapas and excellent wines. We love the Buffalo Maitake Buns adn the Mac and Cheese!",
+		description: "Offering yummy vegan tapas and excellent wines. We love the Buffalo Maitake Buns and the Mac and Cheese!",
 		rating: 4.6,
 		visitors: 554,
 		cuisine: "Small Plates/Cocktails",
