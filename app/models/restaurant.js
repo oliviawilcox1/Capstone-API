@@ -39,6 +39,9 @@ const restaurantSchema = new mongoose.Schema(
 	email: {
 		type: String,
 	},
+	hours: {
+		type: String
+	},
 	review: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Review',
