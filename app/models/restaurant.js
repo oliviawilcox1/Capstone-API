@@ -23,7 +23,7 @@ const restaurantSchema = new mongoose.Schema(
 	},
 	visitors: {
 		type: Number,
-		required: true,
+		default: 0,
 	},
 	cuisine: {
 		type: String,
@@ -35,6 +35,9 @@ const restaurantSchema = new mongoose.Schema(
 	},
 	number: {
 		type: Number,
+	},
+	email: {
+		type: String,
 	},
 	review: {
 		type: mongoose.Schema.Types.ObjectId,

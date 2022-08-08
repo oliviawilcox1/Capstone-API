@@ -117,7 +117,6 @@ router.post('/restaurants',  (req, res, next) => {
 	Restaurant.create(req.body.restaurant)
 		// respond to succesful `create` with status 201 and JSON of new "restaurant"
 		.then((restaurant)=> {
-			console.log(req.body.restaurant)
 			res.status(201).json({ restaurant: restaurant.toObject() })
 		})
 		// if an error occurs, pass it off to our error handler
